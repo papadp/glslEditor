@@ -32,6 +32,47 @@ export default class Shader {
 
         this.canvas = glslcanvas;
 
+        const audioElement = document.getElementById("music")
+
+        let connected = false
+
+        let all_data = null
+        let all_keys = null
+
+        fetch("/build/data_extrawelt.json").then((result)=>{
+            result.json().then((data)=>{
+                all_data = data
+                all_keys = Object.keys(data)
+                console.info("JSON data loaded!")
+            })
+        });
+
+        audioElement.addEventListener('play', () => {
+
+            if (connected === true) {
+                return
+            }
+
+            const AudioContext = window.AudioContext || window.webkitAudioContext;
+            const audioContext = new AudioContext();
+            const track = audioContext.createMediaElementSource(audioElement);
+            let gainNode = audioContext.createGain();
+            track.connect(gainNode);
+            gainNode.connect(audioContext.destination);
+
+            connected = true
+
+            console.log(all_keys)
+            setInterval(function () {
+                if (all_data === null) return;
+                let current_time_track_ms = 1000*track.mediaElement.currentTime;
+                let ix = Math.round(current_time_track_ms / (1000/60))
+                console.log(current_time_track_ms - ix * (1000/60));
+                all_keys.forEach(key => glslcanvas.uniform("1f", "float", "u_dror_"+key, all_data[key][ix]))
+            }, 8);
+
+        });
+
         if (this.options.imgs && this.options.imgs.length > 0) {
             for (let i in this.options.imgs) {
                 this.canvas.setUniform('u_tex' + i, this.options.imgs[i]);
@@ -161,6 +202,7 @@ export default class Shader {
     requestRedraw() {
         this.canvas.forceRender = true;
         this.canvas.render();
+        console.info("HELLO")
     }
 
     screenshot () {

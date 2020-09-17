@@ -26,7 +26,7 @@ import { saveAs } from './vendor/FileSaver.min.js';
 import { CrossStorageClient } from 'cross-storage';
 
 const EMPTY_FRAG_SHADER = `// Author:
-// Title:
+// Title: FUCK YOU twoo
 
 #ifdef GL_ES
 precision mediump float;
@@ -188,6 +188,7 @@ export default class GlslEditor {
                     height = 0.0;
                 }
                 this.shader.el.style.top = height.toString() + 'px';
+
             });
         }
 
