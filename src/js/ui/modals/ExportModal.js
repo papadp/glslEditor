@@ -1,6 +1,6 @@
 import MenuItem from '../MenuItem';
 import Modal from './Modal';
-import { saveOnServer, createOpenFrameArtwork } from '../../io/share';
+import { saveOnServer, createOpenFrameArtwork } from '../../io/Share';
 
 export default class ExportModal extends Modal {
     constructor (CSS_PREFIX, properties) {
