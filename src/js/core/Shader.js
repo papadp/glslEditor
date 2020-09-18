@@ -39,7 +39,7 @@ export default class Shader {
         let all_data = null
         let all_keys = null
 
-        fetch("/build/data_extrawelt.json").then((result)=>{
+        fetch("build/data_extrawelt.json").then((result)=>{
             result.json().then((data)=>{
                 all_data = data
                 all_keys = Object.keys(data)
