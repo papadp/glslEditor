@@ -27,87 +27,9 @@ import { CrossStorageClient } from 'cross-storage';
 
 const EMPTY_FRAG_SHADER = `// Author:
 // Title:
-#ifdef GL_ES
-precision mediump float;
-#endif
 uniform vec2 u_resolution;
 uniform vec2 u_mouse;
 uniform float u_time;
-uniform float u_dror_beat;
-uniform float u_dror_beat0;
-uniform float u_dror_beat1; 
-uniform float u_dror_beat2;
-uniform float u_dror_beat3;
-uniform float u_dror_stereo_transition;
-uniform float u_dror_transition;
-uniform float u_dror_dynamic_transition;
-uniform float u_dror_transients0;
-uniform float u_dror_transients1;
-uniform float u_dror_transients10;
-uniform float u_dror_transients11;
-uniform float u_dror_transients12;
-uniform float u_dror_transients13;
-uniform float u_dror_transients14;
-uniform float u_dror_transients15;
-uniform float u_dror_transients16;
-uniform float u_dror_transients17;
-uniform float u_dror_transients18;
-uniform float u_dror_transients19;
-uniform float u_dror_transients2;
-uniform float u_dror_transients20;
-uniform float u_dror_transients21;
-uniform float u_dror_transients22;
-uniform float u_dror_transients23;
-uniform float u_dror_transients24;
-uniform float u_dror_transients25;
-uniform float u_dror_transients26;
-uniform float u_dror_transients27;
-uniform float u_dror_transients28;
-uniform float u_dror_transients29;
-uniform float u_dror_transients3;
-uniform float u_dror_transients30;
-uniform float u_dror_transients31;
-uniform float u_dror_transients32;
-uniform float u_dror_transients33;
-uniform float u_dror_transients34;
-uniform float u_dror_transients35;
-uniform float u_dror_transients36;
-uniform float u_dror_transients37;
-uniform float u_dror_transients38;
-uniform float u_dror_transients39;
-uniform float u_dror_transients4;
-uniform float u_dror_transients5;
-uniform float u_dror_transients6;
-uniform float u_dror_transients7;
-uniform float u_dror_transients8;
-uniform float u_dror_transients9;
-
-uniform float u_dror_stereo_transition0;
-uniform float u_dror_stereo_transition1;
-uniform float u_dror_stereo_transition2;
-uniform float u_dror_stereo_transition3;
-uniform float u_dror_stereo_transition4;
-uniform float u_dror_stereo_transition5;
-uniform float u_dror_stereo_transition6;
-uniform float u_dror_stereo_transition7;
-
-uniform float u_dror_transition0;
-uniform float u_dror_transition1;
-uniform float u_dror_transition2;
-uniform float u_dror_transition3;
-uniform float u_dror_transition4;
-uniform float u_dror_transition5;
-uniform float u_dror_transition6;
-uniform float u_dror_transition7;
-
-uniform float u_dror_dynamic_transition0;
-uniform float u_dror_dynamic_transition1;
-uniform float u_dror_dynamic_transition2;
-uniform float u_dror_dynamic_transition3;
-uniform float u_dror_dynamic_transition4;
-uniform float u_dror_dynamic_transition5;
-uniform float u_dror_dynamic_transition6;
-uniform float u_dror_dynamic_transition7;
 
 float transients[40];
 void set_transient_array()
