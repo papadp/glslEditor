@@ -300,6 +300,87 @@ export default class GlslEditor {
         }
 
         // Default invisible Fragment header
+        this.options.frag_header = "precision mediump float;\n" +
+            "uniform float u_dror_beat;\n" +
+            "uniform float u_dror_beat0;\n" +
+            "uniform float u_dror_beat1;\n" +
+            "uniform float u_dror_beat2;\n" +
+            "uniform float u_dror_beat3;\n" +
+            "uniform float u_dror_beat_slow;\n" +
+            "uniform float u_dror_dynamic_transition;\n" +
+            "uniform float u_dror_dynamic_transition0;\n" +
+            "uniform float u_dror_dynamic_transition1;\n" +
+            "uniform float u_dror_dynamic_transition2;\n" +
+            "uniform float u_dror_dynamic_transition3;\n" +
+            "uniform float u_dror_dynamic_transition4;\n" +
+            "uniform float u_dror_dynamic_transition5;\n" +
+            "uniform float u_dror_dynamic_transition6;\n" +
+            "uniform float u_dror_dynamic_transition7;\n" +
+            "uniform float u_dror_dynamic_transition_pingpong;\n" +
+            "uniform float u_dror_dynamic_transition_slow;\n" +
+            "uniform float u_dror_stereo_transition;\n" +
+            "uniform float u_dror_stereo_transition0;\n" +
+            "uniform float u_dror_stereo_transition1;\n" +
+            "uniform float u_dror_stereo_transition2;\n" +
+            "uniform float u_dror_stereo_transition3;\n" +
+            "uniform float u_dror_stereo_transition4;\n" +
+            "uniform float u_dror_stereo_transition5;\n" +
+            "uniform float u_dror_stereo_transition6;\n" +
+            "uniform float u_dror_stereo_transition7;\n" +
+            "uniform float u_dror_stereo_transition_pingpong;\n" +
+            "uniform float u_dror_stereo_transition_slow;\n" +
+            "uniform float u_dror_transients0;\n" +
+            "uniform float u_dror_transients1;\n" +
+            "uniform float u_dror_transients10;\n" +
+            "uniform float u_dror_transients11;\n" +
+            "uniform float u_dror_transients12;\n" +
+            "uniform float u_dror_transients13;\n" +
+            "uniform float u_dror_transients14;\n" +
+            "uniform float u_dror_transients15;\n" +
+            "uniform float u_dror_transients16;\n" +
+            "uniform float u_dror_transients17;\n" +
+            "uniform float u_dror_transients18;\n" +
+            "uniform float u_dror_transients19;\n" +
+            "uniform float u_dror_transients2;\n" +
+            "uniform float u_dror_transients20;\n" +
+            "uniform float u_dror_transients21;\n" +
+            "uniform float u_dror_transients22;\n" +
+            "uniform float u_dror_transients23;\n" +
+            "uniform float u_dror_transients24;\n" +
+            "uniform float u_dror_transients25;\n" +
+            "uniform float u_dror_transients26;\n" +
+            "uniform float u_dror_transients27;\n" +
+            "uniform float u_dror_transients28;\n" +
+            "uniform float u_dror_transients29;\n" +
+            "uniform float u_dror_transients3;\n" +
+            "uniform float u_dror_transients30;\n" +
+            "uniform float u_dror_transients31;\n" +
+            "uniform float u_dror_transients32;\n" +
+            "uniform float u_dror_transients33;\n" +
+            "uniform float u_dror_transients34;\n" +
+            "uniform float u_dror_transients35;\n" +
+            "uniform float u_dror_transients36;\n" +
+            "uniform float u_dror_transients37;\n" +
+            "uniform float u_dror_transients38;\n" +
+            "uniform float u_dror_transients39;\n" +
+            "uniform float u_dror_transients4;\n" +
+            "uniform float u_dror_transients5;\n" +
+            "uniform float u_dror_transients6;\n" +
+            "uniform float u_dror_transients7;\n" +
+            "uniform float u_dror_transients8;\n" +
+            "uniform float u_dror_transients9;\n" +
+            "uniform float u_dror_transition;\n" +
+            "uniform float u_dror_transition0;\n" +
+            "uniform float u_dror_transition1;\n" +
+            "uniform float u_dror_transition2;\n" +
+            "uniform float u_dror_transition3;\n" +
+            "uniform float u_dror_transition4;\n" +
+            "uniform float u_dror_transition5;\n" +
+            "uniform float u_dror_transition6;\n" +
+            "uniform float u_dror_transition7;\n" +
+            "uniform float u_dror_transition_pingpong;\n" +
+            "uniform float u_dror_transition_slow;";
+
         if (!this.options.frag_header) {
             this.options.frag_header = '';
         }
