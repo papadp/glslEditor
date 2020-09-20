@@ -63,13 +63,18 @@ export default class Shader {
             connected = true
 
             console.log(all_keys)
-            setInterval(function () {
+
+            this.canvas.on('render', () => {
                 if (all_data === null) return;
                 let current_time_track_ms = 1000*track.mediaElement.currentTime;
                 let ix = Math.round(current_time_track_ms / (1000/60))
                 console.log(current_time_track_ms - ix * (1000/60));
-                all_keys.forEach(key => glslcanvas.uniform("1f", "float", "u_dror_"+key, all_data[key][ix]))
-            }, 8);
+
+                all_keys.forEach(key => {
+                        glslcanvas.uniform("1f", "float", "u_dror_"+key, all_data[key][ix])
+                    }
+                )
+            });
 
         });
 
