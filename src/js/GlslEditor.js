@@ -81,6 +81,34 @@ uniform float u_dror_transients6;
 uniform float u_dror_transients7;
 uniform float u_dror_transients8;
 uniform float u_dror_transients9;
+
+uniform float u_dror_stereo_transition0;
+uniform float u_dror_stereo_transition1;
+uniform float u_dror_stereo_transition2;
+uniform float u_dror_stereo_transition3;
+uniform float u_dror_stereo_transition4;
+uniform float u_dror_stereo_transition5;
+uniform float u_dror_stereo_transition6;
+uniform float u_dror_stereo_transition7;
+
+uniform float u_dror_transition0;
+uniform float u_dror_transition1;
+uniform float u_dror_transition2;
+uniform float u_dror_transition3;
+uniform float u_dror_transition4;
+uniform float u_dror_transition5;
+uniform float u_dror_transition6;
+uniform float u_dror_transition7;
+
+uniform float u_dror_dynamic_transition0;
+uniform float u_dror_dynamic_transition1;
+uniform float u_dror_dynamic_transition2;
+uniform float u_dror_dynamic_transition3;
+uniform float u_dror_dynamic_transition4;
+uniform float u_dror_dynamic_transition5;
+uniform float u_dror_dynamic_transition6;
+uniform float u_dror_dynamic_transition7;
+
 float transients[40];
 void set_transient_array()
 {
@@ -145,12 +173,58 @@ void main()
 \ttotal = max(dist3 - vec3(0. + 1. * u_dror_beat2, 0., 0. + 1. * u_dror_beat2), total);
     vec3 dist4 = circle(0.05 - .025 * u_dror_beat3, vec2(.8, .1), st);
     total = max(dist4 - vec3(0. + 1. * u_dror_beat3, 0., 0. + 1. * u_dror_beat3), total);
+    
     vec3 dist5 = circle(0.1 - .05 * u_dror_stereo_transition, vec2(.4, .3), st);
     total = max(dist5 - vec3(0. + 1. * u_dror_stereo_transition, 0., 0. + 1. * u_dror_stereo_transition), total);
+    
     vec3 dist6 = circle(0.15 - .075 * u_dror_transition, vec2(.65, .3), st);
     total = max(dist6 - vec3(0. + 1. * u_dror_transition, 0., 0. + 1. * u_dror_transition), total);
+    
     vec3 dist7 = circle(0.1 - .05 * u_dror_dynamic_transition , vec2(.9, .3), st);
     total = max(dist7 - vec3(0. + 1. * u_dror_dynamic_transition, 0., 0. + 1. * u_dror_dynamic_transition), total);
+    
+    // Stereo transition enablers
+    
+    vec3 distst0 = circle(0.025 * u_dror_stereo_transition0 , vec2(0.05,0.4), st);
+    total = max(distst0 - vec3(0. + 1. * u_dror_stereo_transition0, 0., 0. + 1. * u_dror_stereo_transition0), total);
+    
+    vec3 distst1 = circle(0.025 * u_dror_stereo_transition1 , vec2(0.05,0.35), st);
+    total = max(distst1 - vec3(0. + 1. * u_dror_stereo_transition1, 0., 0. + 1. * u_dror_stereo_transition1), total);
+    
+    vec3 distst2 = circle(0.025 * u_dror_stereo_transition2 , vec2(0.05,0.3), st);
+    total = max(distst2 - vec3(0. + 1. * u_dror_stereo_transition2, 0., 0. + 1. * u_dror_stereo_transition2), total);
+    
+    vec3 distst3 = circle(0.025 * u_dror_stereo_transition3 , vec2(0.05,0.25), st);
+    total = max(distst3 - vec3(0. + 1. * u_dror_stereo_transition3, 0., 0. + 1. * u_dror_stereo_transition3), total);
+    
+    // Transition enablers
+    
+    vec3 distt0 = circle(0.03 * u_dror_transition0 , vec2(0.1,0.4), st);
+    total = max(distt0 - vec3(0. + 1. * u_dror_transition0, 0., 0. + 1. * u_dror_transition0), total);
+    
+    vec3 distt1 = circle(0.03 * u_dror_transition1 , vec2(0.1,0.35), st);
+    total = max(distt1 - vec3(0. + 1. * u_dror_transition1, 0., 0. + 1. * u_dror_transition1), total);
+    
+    vec3 distt2 = circle(0.03 * u_dror_transition2 , vec2(0.1,0.3), st);
+    total = max(distt2 - vec3(0. + 1. * u_dror_transition2, 0., 0. + 1. * u_dror_transition2), total);
+    
+    vec3 distt3 = circle(0.03 * u_dror_transition3, vec2(0.1,0.25), st);
+    total = max(distt3 - vec3(0. + 1. * u_dror_transition3, 0., 0. + 1. * u_dror_transition3), total);
+    
+    // Dynamic transition enablers
+    
+    vec3 distdt0 = circle(0.025 * u_dror_dynamic_transition0 , vec2(0.15,0.4), st);
+    total = max(distdt0 - vec3(0. + 1. * u_dror_dynamic_transition0, 0., 0. + 1. * u_dror_dynamic_transition0), total);
+    
+    vec3 distdt1 = circle(0.025 * u_dror_dynamic_transition1 , vec2(0.15,0.35), st);
+    total = max(distdt1 - vec3(0. + 1. * u_dror_dynamic_transition1, 0., 0. + 1. * u_dror_dynamic_transition1), total);
+    
+    vec3 distdt2 = circle(0.025 * u_dror_dynamic_transition2, vec2(0.15,0.3), st);
+    total = max(distdt2 - vec3(0. + 1. * u_dror_dynamic_transition2, 0., 0. + 1. * u_dror_dynamic_transition2), total);
+    
+    vec3 distdt3 = circle(0.025 * u_dror_dynamic_transition3, vec2(0.15,0.25), st);
+    total = max(distdt3 - vec3(0. + 1. * u_dror_dynamic_transition3, 0., 0. + 1. * u_dror_dynamic_transition3), total);
+    
     for(int i=0; i<40; ++i)
     {
       float i_float = float(i);
