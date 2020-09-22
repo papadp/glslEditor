@@ -226,7 +226,7 @@ export default class GlslEditor {
         }
 
         // Default invisible Fragment header
-        this.options.frag_header = `precision mediump float;\n" +
+        this.options.frag_header = `precision mediump float;
 uniform float u_beat;
 uniform float u_beat0;
 uniform float u_beat1;
