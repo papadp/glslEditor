@@ -34,46 +34,46 @@ uniform float u_time;
 float transients[40];
 void set_transient_array()
 {
-    transients[0] = u_dror_transients0;
-    transients[1] = u_dror_transients1;
-    transients[2] = u_dror_transients2;
-    transients[3] = u_dror_transients3;
-    transients[4] = u_dror_transients4;
-    transients[5] = u_dror_transients5;
-    transients[6] = u_dror_transients6;
-    transients[7] = u_dror_transients7;
-    transients[8] = u_dror_transients8;
-    transients[9] = u_dror_transients9;
-    transients[10] = u_dror_transients10;
-    transients[11] = u_dror_transients11;
-    transients[12] = u_dror_transients12;
-    transients[13] = u_dror_transients13;
-    transients[14] = u_dror_transients14;
-    transients[15] = u_dror_transients15;
-    transients[16] = u_dror_transients16;
-    transients[17] = u_dror_transients17;
-    transients[18] = u_dror_transients18;
-    transients[19] = u_dror_transients19;
-    transients[20] = u_dror_transients20;
-    transients[21] = u_dror_transients21;
-    transients[22] = u_dror_transients22;
-    transients[23] = u_dror_transients23;
-    transients[24] = u_dror_transients24;
-    transients[25] = u_dror_transients25;
-    transients[26] = u_dror_transients26;
-    transients[27] = u_dror_transients27;
-    transients[28] = u_dror_transients28;
-    transients[29] = u_dror_transients29;
-    transients[30] = u_dror_transients30;
-    transients[31] = u_dror_transients31;
-    transients[32] = u_dror_transients32;
-    transients[33] = u_dror_transients33;
-    transients[34] = u_dror_transients34;
-    transients[35] = u_dror_transients35;
-    transients[36] = u_dror_transients36;
-    transients[37] = u_dror_transients37;
-    transients[38] = u_dror_transients38;
-    transients[39] = u_dror_transients39;
+    transients[0] = u_transients0;
+    transients[1] = u_transients1;
+    transients[2] = u_transients2;
+    transients[3] = u_transients3;
+    transients[4] = u_transients4;
+    transients[5] = u_transients5;
+    transients[6] = u_transients6;
+    transients[7] = u_transients7;
+    transients[8] = u_transients8;
+    transients[9] = u_transients9;
+    transients[10] = u_transients10;
+    transients[11] = u_transients11;
+    transients[12] = u_transients12;
+    transients[13] = u_transients13;
+    transients[14] = u_transients14;
+    transients[15] = u_transients15;
+    transients[16] = u_transients16;
+    transients[17] = u_transients17;
+    transients[18] = u_transients18;
+    transients[19] = u_transients19;
+    transients[20] = u_transients20;
+    transients[21] = u_transients21;
+    transients[22] = u_transients22;
+    transients[23] = u_transients23;
+    transients[24] = u_transients24;
+    transients[25] = u_transients25;
+    transients[26] = u_transients26;
+    transients[27] = u_transients27;
+    transients[28] = u_transients28;
+    transients[29] = u_transients29;
+    transients[30] = u_transients30;
+    transients[31] = u_transients31;
+    transients[32] = u_transients32;
+    transients[33] = u_transients33;
+    transients[34] = u_transients34;
+    transients[35] = u_transients35;
+    transients[36] = u_transients36;
+    transients[37] = u_transients37;
+    transients[38] = u_transients38;
+    transients[39] = u_transients39;
 }
 vec3 circle(float size, vec2 pos, vec2 st)
 {
@@ -87,69 +87,69 @@ void main()
     vec2 st = gl_FragCoord.xy/u_resolution.xy;
     st.x *= u_resolution.x/u_resolution.y;
     vec3 total = vec3(0., 0., 0.);
-    vec3 dist = circle(0.05 - .025 * u_dror_beate0, vec2(.5, .1), st);
-    total = max(dist - vec3(0. + 1. * u_dror_beate0, 0., 0. + 1. * u_dror_beate0), total);
-    vec3 dist2 = circle(0.05 - .025 * u_dror_beate1, vec2(.6, .1), st);
-    total = max(dist2 - vec3(0. + 1. * u_dror_beate1, 0., 0. + 1. * u_dror_beate1), total);
-    vec3 dist3 = circle(0.05 - .025 * u_dror_beate2 , vec2(.7, .1), st);
-\ttotal = max(dist3 - vec3(0. + 1. * u_dror_beate2, 0., 0. + 1. * u_dror_beate2), total);
+    vec3 dist = circle(0.05 - .025 * u_beat0, vec2(.5, .1), st);
+    total = max(dist - vec3(0. + 1. * u_beat0, 0., 0. + 1. * u_beat0), total);
+    vec3 dist2 = circle(0.05 - .025 * u_beat1, vec2(.6, .1), st);
+    total = max(dist2 - vec3(0. + 1. * u_beat1, 0., 0. + 1. * u_beat1), total);
+    vec3 dist3 = circle(0.05 - .025 * u_beat2 , vec2(.7, .1), st);
+\ttotal = max(dist3 - vec3(0. + 1. * u_beat2, 0., 0. + 1. * u_beat2), total);
     
-    vec3 dist4 = circle(0.05 - .025 * u_dror_beate3, vec2(.8, .1), st);
-    total = max(dist4 - vec3(0. + 1. * u_dror_beate3, 0., 0. + 1. * u_dror_beate3), total);
+    vec3 dist4 = circle(0.05 - .025 * u_beat3, vec2(.8, .1), st);
+    total = max(dist4 - vec3(0. + 1. * u_beat3, 0., 0. + 1. * u_beat3), total);
     
-    vec3 dist_beat = circle(0.02 - .025 * u_dror_beate, vec2(.43, .13), st);
-    total = max(dist_beat - vec3(0. + 1. * u_dror_beate, 0., 0. + 1. * u_dror_beate), total);
+    vec3 dist_beat = circle(0.02 - .025 * u_beat, vec2(.43, .13), st);
+    total = max(dist_beat - vec3(0. + 1. * u_beat, 0., 0. + 1. * u_beat), total);
     
-    vec3 dist5 = circle(0.1 - .05 * u_dror_stereo_transition, vec2(.4, .3), st);
-    total = max(dist5 - vec3(0. + 1. * u_dror_stereo_transition, 0., 0. + 1. * u_dror_stereo_transition), total);
+    vec3 dist5 = circle(0.1 - .05 * u_stereo_transition, vec2(.4, .3), st);
+    total = max(dist5 - vec3(0. + 1. * u_stereo_transition, 0., 0. + 1. * u_stereo_transition), total);
     
-    vec3 dist6 = circle(0.15 - .075 * u_dror_transition, vec2(.65, .3), st);
-    total = max(dist6 - vec3(0. + 1. * u_dror_transition, 0., 0. + 1. * u_dror_transition), total);
+    vec3 dist6 = circle(0.15 - .075 * u_transition, vec2(.65, .3), st);
+    total = max(dist6 - vec3(0. + 1. * u_transition, 0., 0. + 1. * u_transition), total);
     
-    vec3 dist7 = circle(0.1 - .05 * u_dror_dynamic_transition , vec2(.9, .3), st);
-    total = max(dist7 - vec3(0. + 1. * u_dror_dynamic_transition, 0., 0. + 1. * u_dror_dynamic_transition), total);
+    vec3 dist7 = circle(0.1 - .05 * u_dynamic_transition , vec2(.9, .3), st);
+    total = max(dist7 - vec3(0. + 1. * u_dynamic_transition, 0., 0. + 1. * u_dynamic_transition), total);
     
     // Stereo transition enablers
     
-    vec3 distst0 = circle(0.025 * u_dror_stereo_transition0 , vec2(0.05,0.4), st);
-    total = max(distst0 - vec3(0. + 1. * u_dror_stereo_transition0, 0., 0. + 1. * u_dror_stereo_transition0), total);
+    vec3 distst0 = circle(0.025 * u_stereo_transition0 , vec2(0.05,0.4), st);
+    total = max(distst0 - vec3(0. + 1. * u_stereo_transition0, 0., 0. + 1. * u_stereo_transition0), total);
     
-    vec3 distst1 = circle(0.025 * u_dror_stereo_transition1 , vec2(0.05,0.35), st);
-    total = max(distst1 - vec3(0. + 1. * u_dror_stereo_transition1, 0., 0. + 1. * u_dror_stereo_transition1), total);
+    vec3 distst1 = circle(0.025 * u_stereo_transition1 , vec2(0.05,0.35), st);
+    total = max(distst1 - vec3(0. + 1. * u_stereo_transition1, 0., 0. + 1. * u_stereo_transition1), total);
     
-    vec3 distst2 = circle(0.025 * u_dror_stereo_transition2 , vec2(0.05,0.3), st);
-    total = max(distst2 - vec3(0. + 1. * u_dror_stereo_transition2, 0., 0. + 1. * u_dror_stereo_transition2), total);
+    vec3 distst2 = circle(0.025 * u_stereo_transition2 , vec2(0.05,0.3), st);
+    total = max(distst2 - vec3(0. + 1. * u_stereo_transition2, 0., 0. + 1. * u_stereo_transition2), total);
     
-    vec3 distst3 = circle(0.025 * u_dror_stereo_transition3 , vec2(0.05,0.25), st);
-    total = max(distst3 - vec3(0. + 1. * u_dror_stereo_transition3, 0., 0. + 1. * u_dror_stereo_transition3), total);
+    vec3 distst3 = circle(0.025 * u_stereo_transition3 , vec2(0.05,0.25), st);
+    total = max(distst3 - vec3(0. + 1. * u_stereo_transition3, 0., 0. + 1. * u_stereo_transition3), total);
     
     // Transition enablers
     
-    vec3 distt0 = circle(0.03 * u_dror_transition0 , vec2(0.1,0.4), st);
-    total = max(distt0 - vec3(0. + 1. * u_dror_transition0, 0., 0. + 1. * u_dror_transition0), total);
+    vec3 distt0 = circle(0.03 * u_transition0 , vec2(0.1,0.4), st);
+    total = max(distt0 - vec3(0. + 1. * u_transition0, 0., 0. + 1. * u_transition0), total);
     
-    vec3 distt1 = circle(0.03 * u_dror_transition1 , vec2(0.1,0.35), st);
-    total = max(distt1 - vec3(0. + 1. * u_dror_transition1, 0., 0. + 1. * u_dror_transition1), total);
+    vec3 distt1 = circle(0.03 * u_transition1 , vec2(0.1,0.35), st);
+    total = max(distt1 - vec3(0. + 1. * u_transition1, 0., 0. + 1. * u_transition1), total);
     
-    vec3 distt2 = circle(0.03 * u_dror_transition2 , vec2(0.1,0.3), st);
-    total = max(distt2 - vec3(0. + 1. * u_dror_transition2, 0., 0. + 1. * u_dror_transition2), total);
+    vec3 distt2 = circle(0.03 * u_transition2 , vec2(0.1,0.3), st);
+    total = max(distt2 - vec3(0. + 1. * u_transition2, 0., 0. + 1. * u_transition2), total);
     
-    vec3 distt3 = circle(0.03 * u_dror_transition3, vec2(0.1,0.25), st);
-    total = max(distt3 - vec3(0. + 1. * u_dror_transition3, 0., 0. + 1. * u_dror_transition3), total);
+    vec3 distt3 = circle(0.03 * u_transition3, vec2(0.1,0.25), st);
+    total = max(distt3 - vec3(0. + 1. * u_transition3, 0., 0. + 1. * u_transition3), total);
     
     // Dynamic transition enablers
     
-    vec3 distdt0 = circle(0.025 * u_dror_dynamic_transition0 , vec2(0.15,0.4), st);
-    total = max(distdt0 - vec3(0. + 1. * u_dror_dynamic_transition0, 0., 0. + 1. * u_dror_dynamic_transition0), total);
+    vec3 distdt0 = circle(0.025 * u_dynamic_transition0 , vec2(0.15,0.4), st);
+    total = max(distdt0 - vec3(0. + 1. * u_dynamic_transition0, 0., 0. + 1. * u_dynamic_transition0), total);
     
-    vec3 distdt1 = circle(0.025 * u_dror_dynamic_transition1 , vec2(0.15,0.35), st);
-    total = max(distdt1 - vec3(0. + 1. * u_dror_dynamic_transition1, 0., 0. + 1. * u_dror_dynamic_transition1), total);
+    vec3 distdt1 = circle(0.025 * u_dynamic_transition1 , vec2(0.15,0.35), st);
+    total = max(distdt1 - vec3(0. + 1. * u_dynamic_transition1, 0., 0. + 1. * u_dynamic_transition1), total);
     
-    vec3 distdt2 = circle(0.025 * u_dror_dynamic_transition2, vec2(0.15,0.3), st);
-    total = max(distdt2 - vec3(0. + 1. * u_dror_dynamic_transition2, 0., 0. + 1. * u_dror_dynamic_transition2), total);
+    vec3 distdt2 = circle(0.025 * u_dynamic_transition2, vec2(0.15,0.3), st);
+    total = max(distdt2 - vec3(0. + 1. * u_dynamic_transition2, 0., 0. + 1. * u_dynamic_transition2), total);
     
-    vec3 distdt3 = circle(0.025 * u_dror_dynamic_transition3, vec2(0.15,0.25), st);
-    total = max(distdt3 - vec3(0. + 1. * u_dror_dynamic_transition3, 0., 0. + 1. * u_dror_dynamic_transition3), total);
+    vec3 distdt3 = circle(0.025 * u_dynamic_transition3, vec2(0.15,0.25), st);
+    total = max(distdt3 - vec3(0. + 1. * u_dynamic_transition3, 0., 0. + 1. * u_dynamic_transition3), total);
     
     for(int i=0; i<40; ++i)
     {
@@ -226,91 +226,95 @@ export default class GlslEditor {
         }
 
         // Default invisible Fragment header
-        this.options.frag_header = "precision mediump float;\n" +
-            "uniform float u_dror_beat;\n" +
-            "uniform float u_dror_beat0;\n" +
-            "uniform float u_dror_beat1;\n" +
-            "uniform float u_dror_beat2;\n" +
-            "uniform float u_dror_beat3;\n" +
-            "uniform float u_dror_beate;\n" +
-            "uniform float u_dror_beate0;\n" +
-            "uniform float u_dror_beate1;\n" +
-            "uniform float u_dror_beate2;\n" +
-            "uniform float u_dror_beate3;\n" +
-            "uniform float u_dror_beat_slow;\n" +
-            "uniform float u_dror_dynamic_transition;\n" +
-            "uniform float u_dror_dynamic_transition0;\n" +
-            "uniform float u_dror_dynamic_transition1;\n" +
-            "uniform float u_dror_dynamic_transition2;\n" +
-            "uniform float u_dror_dynamic_transition3;\n" +
-            "uniform float u_dror_dynamic_transition4;\n" +
-            "uniform float u_dror_dynamic_transition5;\n" +
-            "uniform float u_dror_dynamic_transition6;\n" +
-            "uniform float u_dror_dynamic_transition7;\n" +
-            "uniform float u_dror_dynamic_transition_pingpong;\n" +
-            "uniform float u_dror_dynamic_transition_slow;\n" +
-            "uniform float u_dror_stereo_transition;\n" +
-            "uniform float u_dror_stereo_transition0;\n" +
-            "uniform float u_dror_stereo_transition1;\n" +
-            "uniform float u_dror_stereo_transition2;\n" +
-            "uniform float u_dror_stereo_transition3;\n" +
-            "uniform float u_dror_stereo_transition4;\n" +
-            "uniform float u_dror_stereo_transition5;\n" +
-            "uniform float u_dror_stereo_transition6;\n" +
-            "uniform float u_dror_stereo_transition7;\n" +
-            "uniform float u_dror_stereo_transition_pingpong;\n" +
-            "uniform float u_dror_stereo_transition_slow;\n" +
-            "uniform float u_dror_transients0;\n" +
-            "uniform float u_dror_transients1;\n" +
-            "uniform float u_dror_transients10;\n" +
-            "uniform float u_dror_transients11;\n" +
-            "uniform float u_dror_transients12;\n" +
-            "uniform float u_dror_transients13;\n" +
-            "uniform float u_dror_transients14;\n" +
-            "uniform float u_dror_transients15;\n" +
-            "uniform float u_dror_transients16;\n" +
-            "uniform float u_dror_transients17;\n" +
-            "uniform float u_dror_transients18;\n" +
-            "uniform float u_dror_transients19;\n" +
-            "uniform float u_dror_transients2;\n" +
-            "uniform float u_dror_transients20;\n" +
-            "uniform float u_dror_transients21;\n" +
-            "uniform float u_dror_transients22;\n" +
-            "uniform float u_dror_transients23;\n" +
-            "uniform float u_dror_transients24;\n" +
-            "uniform float u_dror_transients25;\n" +
-            "uniform float u_dror_transients26;\n" +
-            "uniform float u_dror_transients27;\n" +
-            "uniform float u_dror_transients28;\n" +
-            "uniform float u_dror_transients29;\n" +
-            "uniform float u_dror_transients3;\n" +
-            "uniform float u_dror_transients30;\n" +
-            "uniform float u_dror_transients31;\n" +
-            "uniform float u_dror_transients32;\n" +
-            "uniform float u_dror_transients33;\n" +
-            "uniform float u_dror_transients34;\n" +
-            "uniform float u_dror_transients35;\n" +
-            "uniform float u_dror_transients36;\n" +
-            "uniform float u_dror_transients37;\n" +
-            "uniform float u_dror_transients38;\n" +
-            "uniform float u_dror_transients39;\n" +
-            "uniform float u_dror_transients4;\n" +
-            "uniform float u_dror_transients5;\n" +
-            "uniform float u_dror_transients6;\n" +
-            "uniform float u_dror_transients7;\n" +
-            "uniform float u_dror_transients8;\n" +
-            "uniform float u_dror_transients9;\n" +
-            "uniform float u_dror_transition;\n" +
-            "uniform float u_dror_transition0;\n" +
-            "uniform float u_dror_transition1;\n" +
-            "uniform float u_dror_transition2;\n" +
-            "uniform float u_dror_transition3;\n" +
-            "uniform float u_dror_transition4;\n" +
-            "uniform float u_dror_transition5;\n" +
-            "uniform float u_dror_transition6;\n" +
-            "uniform float u_dror_transition7;\n" +
-            "uniform float u_dror_transition_pingpong;\n" +
-            "uniform float u_dror_transition_slow;";
+        this.options.frag_header = `precision mediump float;\n" +
+uniform float u_beat;
+uniform float u_beat0;
+uniform float u_beat1;
+uniform float u_beat2;
+uniform float u_beat3;
+uniform float u_beat_inc;
+uniform float u_beat_inc0;
+uniform float u_beat_inc1;
+uniform float u_beat_inc2;
+uniform float u_beat_inc3;
+uniform float u_beat_slow;
+uniform float u_dynamic_transition;
+uniform float u_dynamic_transition0;
+uniform float u_dynamic_transition1;
+uniform float u_dynamic_transition2;
+uniform float u_dynamic_transition3;
+uniform float u_dynamic_transition4;
+uniform float u_dynamic_transition5;
+uniform float u_dynamic_transition6;
+uniform float u_dynamic_transition7;
+uniform float u_dynamic_transition_inc;
+uniform float u_dynamic_transition_pingpong;
+uniform float u_dynamic_transition_slow;
+uniform float u_stereo_transition;
+uniform float u_stereo_transition0;
+uniform float u_stereo_transition1;
+uniform float u_stereo_transition2;
+uniform float u_stereo_transition3;
+uniform float u_stereo_transition4;
+uniform float u_stereo_transition5;
+uniform float u_stereo_transition6;
+uniform float u_stereo_transition7;
+uniform float u_stereo_transition_inc;
+uniform float u_stereo_transition_pingpong;
+uniform float u_stereo_transition_slow;
+uniform float u_times;
+uniform float u_transients0;
+uniform float u_transients1;
+uniform float u_transients10;
+uniform float u_transients11;
+uniform float u_transients12;
+uniform float u_transients13;
+uniform float u_transients14;
+uniform float u_transients15;
+uniform float u_transients16;
+uniform float u_transients17;
+uniform float u_transients18;
+uniform float u_transients19;
+uniform float u_transients2;
+uniform float u_transients20;
+uniform float u_transients21;
+uniform float u_transients22;
+uniform float u_transients23;
+uniform float u_transients24;
+uniform float u_transients25;
+uniform float u_transients26;
+uniform float u_transients27;
+uniform float u_transients28;
+uniform float u_transients29;
+uniform float u_transients3;
+uniform float u_transients30;
+uniform float u_transients31;
+uniform float u_transients32;
+uniform float u_transients33;
+uniform float u_transients34;
+uniform float u_transients35;
+uniform float u_transients36;
+uniform float u_transients37;
+uniform float u_transients38;
+uniform float u_transients39;
+uniform float u_transients4;
+uniform float u_transients5;
+uniform float u_transients6;
+uniform float u_transients7;
+uniform float u_transients8;
+uniform float u_transients9;
+uniform float u_transition;
+uniform float u_transition0;
+uniform float u_transition1;
+uniform float u_transition2;
+uniform float u_transition3;
+uniform float u_transition4;
+uniform float u_transition5;
+uniform float u_transition6;
+uniform float u_transition7;
+uniform float u_transition_inc;
+uniform float u_transition_pingpong;
+uniform float u_transition_slow;`;
 
         if (!this.options.frag_header) {
             this.options.frag_header = '';

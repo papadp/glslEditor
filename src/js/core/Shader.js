@@ -71,7 +71,7 @@ export default class Shader {
                 console.log(current_time_track_ms - ix * (1000/60));
 
                 all_keys.forEach(key => {
-                        glslcanvas.uniform("1f", "float", "u_dror_"+key, all_data[key][ix])
+                        glslcanvas.uniform("1f", "float", "u_" + key, all_data[key][ix])
                     }
                 )
             });
