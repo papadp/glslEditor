@@ -87,14 +87,18 @@ void main()
     vec2 st = gl_FragCoord.xy/u_resolution.xy;
     st.x *= u_resolution.x/u_resolution.y;
     vec3 total = vec3(0., 0., 0.);
-    vec3 dist = circle(0.05 - .025 * u_dror_beat0, vec2(.5, .1), st);
-    total = max(dist - vec3(0. + 1. * u_dror_beat0, 0., 0. + 1. * u_dror_beat0), total);
-    vec3 dist2 = circle(0.05 - .025 * u_dror_beat1, vec2(.6, .1), st);
-    total = max(dist2 - vec3(0. + 1. * u_dror_beat1, 0., 0. + 1. * u_dror_beat1), total);
-    vec3 dist3 = circle(0.05 - .025 * u_dror_beat2 , vec2(.7, .1), st);
-\ttotal = max(dist3 - vec3(0. + 1. * u_dror_beat2, 0., 0. + 1. * u_dror_beat2), total);
-    vec3 dist4 = circle(0.05 - .025 * u_dror_beat3, vec2(.8, .1), st);
-    total = max(dist4 - vec3(0. + 1. * u_dror_beat3, 0., 0. + 1. * u_dror_beat3), total);
+    vec3 dist = circle(0.05 - .025 * u_dror_beate0, vec2(.5, .1), st);
+    total = max(dist - vec3(0. + 1. * u_dror_beate0, 0., 0. + 1. * u_dror_beate0), total);
+    vec3 dist2 = circle(0.05 - .025 * u_dror_beate1, vec2(.6, .1), st);
+    total = max(dist2 - vec3(0. + 1. * u_dror_beate1, 0., 0. + 1. * u_dror_beate1), total);
+    vec3 dist3 = circle(0.05 - .025 * u_dror_beate2 , vec2(.7, .1), st);
+\ttotal = max(dist3 - vec3(0. + 1. * u_dror_beate2, 0., 0. + 1. * u_dror_beate2), total);
+    
+    vec3 dist4 = circle(0.05 - .025 * u_dror_beate3, vec2(.8, .1), st);
+    total = max(dist4 - vec3(0. + 1. * u_dror_beate3, 0., 0. + 1. * u_dror_beate3), total);
+    
+    vec3 dist_beat = circle(0.02 - .025 * u_dror_beate, vec2(.43, .13), st);
+    total = max(dist_beat - vec3(0. + 1. * u_dror_beate, 0., 0. + 1. * u_dror_beate), total);
     
     vec3 dist5 = circle(0.1 - .05 * u_dror_stereo_transition, vec2(.4, .3), st);
     total = max(dist5 - vec3(0. + 1. * u_dror_stereo_transition, 0., 0. + 1. * u_dror_stereo_transition), total);
@@ -228,6 +232,11 @@ export default class GlslEditor {
             "uniform float u_dror_beat1;\n" +
             "uniform float u_dror_beat2;\n" +
             "uniform float u_dror_beat3;\n" +
+            "uniform float u_dror_beate;\n" +
+            "uniform float u_dror_beate0;\n" +
+            "uniform float u_dror_beate1;\n" +
+            "uniform float u_dror_beate2;\n" +
+            "uniform float u_dror_beate3;\n" +
             "uniform float u_dror_beat_slow;\n" +
             "uniform float u_dror_dynamic_transition;\n" +
             "uniform float u_dror_dynamic_transition0;\n" +
