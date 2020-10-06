@@ -30,19 +30,19 @@ export default class Menu {
         // this.menus.autoupdate.button.style.color = main.autoupdate ? 'white' : 'gray';
 
         // TEST
-        this.menus.test = new MenuItem(this.el, 'ge_menu', '<i class="material-icons">timeline</i> Test', (event) => {
-            main.visualDebugger.check();
-        });
+        // this.menus.test = new MenuItem(this.el, 'ge_menu', '<i class="material-icons">timeline</i> Test', (event) => {
+        //     main.visualDebugger.check();
+        // });
 
         // SHARE
-        this.menus.share = new MenuItem(this.el, 'ge_menu', '<i class="material-icons">arrow_upward</i> Export', (event) => {
-            if (main.change || !this.exportModal) {
-                this.exportModal = new ExportModal('ge_export', { main: main, position: 'fixed' });
-            }
-
-            let bbox = this.menus.share.el.getBoundingClientRect();
-            this.exportModal.presentModal(bbox.left - 5, bbox.top + bbox.height + 5);
-        });
+        // this.menus.share = new MenuItem(this.el, 'ge_menu', '<i class="material-icons">arrow_upward</i> Export', (event) => {
+        //     if (main.change || !this.exportModal) {
+        //         this.exportModal = new ExportModal('ge_export', { main: main, position: 'fixed' });
+        //     }
+        //
+        //     let bbox = this.menus.share.el.getBoundingClientRect();
+        //     this.exportModal.presentModal(bbox.left - 5, bbox.top + bbox.height + 5);
+        // });
 
 
         // AUTOUPDATE

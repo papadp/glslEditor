@@ -3,10 +3,13 @@
 /* VARIABLES */
 
 audio {
-    position: absolute;
+
+    position: fixed;
+    /*position: absolute;*/
     z-index: 12412412;
-    left:300px;
-    top:50px;
+    width: calc(100%)
+    /*left:300px;*/
+    /*top:50px;*/
 }
 
 :root {
