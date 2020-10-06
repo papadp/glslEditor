@@ -35,6 +35,9 @@ export function initEditor (main) {
     // If there is a menu offset the editor to come after it
     if (main.menu) {
         el.style.paddingTop = (main.menu.el.clientHeight || main.menu.el.offsetHeight || main.menu.el.scrollHeight) + 'px';
+
+        // Hacky pad for bottom audio player
+        el.style.paddingBottom = (main.menu.el.clientHeight || main.menu.el.offsetHeight || main.menu.el.scrollHeight) + 'px';
     }
 
     main.container.appendChild(el);
