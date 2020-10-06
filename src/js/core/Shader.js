@@ -4,6 +4,7 @@ import MediaCapture from '../tools/mediaCapture';
 import MenuItem from '../ui/MenuItem';
 // 3er Parties
 import { saveAs } from '../vendor/FileSaver.min.js';
+import { set_current_track_name, tracks } from '../ui/Menu';
 
 var CONTROLS_CLASSNAME = 'ge_control';
 var CONTROLS_PANEL_CLASSNAME = 'ge_control_panel';
@@ -32,22 +33,14 @@ export default class Shader {
 
         this.canvas = glslcanvas;
 
-        const audioElement = document.getElementById("music")
+        const audioElement = document.getElementById("music");
 
         let connected = false
 
         let all_data = null
         let all_keys = null
 
-        fetch("build/data_extrawelt.json").then((result)=>{
-            result.json().then((data)=>{
-                all_data = data
-                all_keys = Object.keys(data)
-                console.info("JSON data loaded!")
-            })
-        });
-
-        audioElement.addEventListener('play', () => {
+        let play_listener = () => {
 
             if (connected === true) {
                 return
@@ -76,7 +69,60 @@ export default class Shader {
                 )
             });
 
+        };
+
+        // fetch("build/data_odysee.json").then((result)=>{
+        //     result.json().then((data)=>{
+        //         all_data = data
+        //         all_keys = Object.keys(data)
+        //         console.info("JSON data loaded!")
+        //     })
+        // });
+
+        audioElement.addEventListener("change_track", function(event) {
+
+            console.error("change_track");
+
+            all_data = null;
+
+            console.error(event);
+            console.error(event.detail.track_data);
+            console.error(event.detail.track_audio);
+            console.error(event.detail.track_name);
+
+            fetch(event.detail.track_data).then((result)=>{
+                result.json().then((data)=>{
+                    all_data = data
+                    all_keys = Object.keys(data)
+                    console.info("JSON data loaded!")
+                })
+            });
+
+            const audioElement = document.getElementById("music");
+
+            audioElement.pause();
+            var source = audioElement.getElementsByTagName("source");
+            console.error("source " + source[0].src);
+            source[0].src = event.detail.track_audio;
+
+            audioElement.load();
+
+            set_current_track_name(event.detail.track_name);
+
+            audioElement.removeEventListener('play', play_listener);
+            audioElement.addEventListener('play', play_listener);
+
         });
+
+        audioElement.addEventListener('play', play_listener);
+
+        audioElement.dispatchEvent(new CustomEvent("change_track", {
+            "detail": {
+                "track_data": tracks[0]["data"],
+                "track_audio": tracks[0]["track"],
+                "track_name": tracks[0]["name"]
+            }
+        }));
 
         if (this.options.imgs && this.options.imgs.length > 0) {
             for (let i in this.options.imgs) {

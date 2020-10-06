@@ -3,13 +3,17 @@
 .ge_menu_bar {
     position: fixed;
     width: 100%;
-    margin: 50px;
+    margin: 0px;
     z-index: var(--z-menu);
     color: var(--ui-component-text-color);
     background-color: var(--ui-base-color);
     font-family: Helvetica, Geneva, sans-serif;
     font-weight: 400;
 }
+
+/*.ge_menu_dropdown {*/
+/**/
+/*}*/
 
 .ge_menu {
     display: inline-block;

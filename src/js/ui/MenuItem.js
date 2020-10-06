@@ -11,6 +11,7 @@ export default class MenuItem {
 
         // Attach listeners, including those for tooltip behavior
         this.button.addEventListener('click', onClick, true);
+        // this.button.addEventListener('hover', onClick, true);
 
         if (container) {
             container.appendChild(this.el);
