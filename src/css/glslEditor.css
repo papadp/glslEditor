@@ -82,6 +82,53 @@ audio {
     --z-helpers: 1000;
 }
 
+#music-player {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  background-color: red;
+  color: white;
+  text-align: center;
+}
+
+#track-controls {
+
+  display: flex;
+  flex-wrap: wrap;
+  /* for horizontal aligning of child divs */
+  /*justify-content: center;*/
+  /* for vertical aligning */
+  align-items: center;
+
+    /*position: absolute;
+    display: inline-block;
+    width: 12em;
+    height: 2em;*/
+}
+
+#track-buttons {
+    display: inline-block;
+    height: auto;
+}
+
+#track-times {
+    color: white;
+    display: inline-block;
+    height: auto;
+}
+
+#glsl_editor {
+    height: 51.5em;
+    overflow-y: scroll;
+}
+
+html, body {
+  height: 100%;
+  margin: 0;
+}
+
+
 /* Native Codemirror */
 @import 'codemirror/lib/codemirror.css';
 @import 'codemirror/addon/dialog/dialog.css';

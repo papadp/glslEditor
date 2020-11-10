@@ -9,6 +9,104 @@ import { set_current_track_name, tracks } from '../ui/Menu';
 var CONTROLS_CLASSNAME = 'ge_control';
 var CONTROLS_PANEL_CLASSNAME = 'ge_control_panel';
 
+var wavesurfer = null;
+var context = new AudioContext();
+
+var trackTimesUpdateInterval = null;
+
+function updateTrackTimes() {
+    if (wavesurfer != null) {
+        var trackCurrentTime = wavesurfer.getCurrentTime();
+        var trackDuration = wavesurfer.getDuration();
+
+        setTrackTimes(trackCurrentTime, trackDuration);
+    }
+    else
+    {
+        setTrackTimes(0, 0);
+    }
+}
+
+function setTrackTimes(currentTime, totalDuration) {
+
+    var trackTimesLabel = document.getElementById('track-times-label');
+
+    var minutesCurrentTime = String(Math.floor(currentTime / 60)).padStart(2, '0');
+    var secondsCurrentTime = String(Math.round(currentTime % 60)).padStart(2, '0');
+
+    var minutesTotalDuration = String(Math.floor(totalDuration / 60)).padStart(2, '0');
+    var secondsTotalDuration = String(Math.round(totalDuration % 60)).padStart(2, '0');
+
+//    String(input).padStart(2, '0');
+
+    trackTimesLabel.innerHTML = `${minutesCurrentTime}:${secondsCurrentTime} / ${minutesTotalDuration}:${secondsTotalDuration}`;
+
+}
+
+function playButton() {
+    console.error("play click")
+    wavesurfer.play();
+    enablePause();
+}
+
+function pauseButton() {
+    console.error("pause click")
+    wavesurfer.pause();
+    enablePlay();
+}
+
+function disablePlayPause() {
+
+    console.error("disablePlayPause!")
+    const playPauseButton = document.getElementById("play-pause-button");
+    playPauseButton.disabled = true;
+
+    playPauseButton.removeEventListener('click', playButton)
+    playPauseButton.removeEventListener('click', pauseButton);
+}
+
+function enablePause() {
+
+    console.error("enablePause!")
+    const playPauseButton = document.getElementById("play-pause-button");
+    playPauseButton.disabled = false;
+
+    playPauseButton.innerHTML = '<i class="material-icons">pause</i>'
+    playPauseButton.removeEventListener('click', pauseButton)
+    playPauseButton.removeEventListener('click', playButton)
+    playPauseButton.addEventListener('click', pauseButton)
+
+}
+
+function enablePlay() {
+
+    console.error("enablePlay!")
+    const playPauseButton = document.getElementById("play-pause-button");
+    playPauseButton.disabled = false;
+
+    playPauseButton.innerHTML = '<i class="material-icons">play_arrow</i>'
+    playPauseButton.removeEventListener('click', playButton)
+    playPauseButton.removeEventListener('click', pauseButton)
+    playPauseButton.addEventListener('click', playButton)
+
+}
+
+function readyListener(e) {
+    enablePlay();
+    updateTrackTimes()
+    console.error("Wavesurfer ready")
+}
+
+function seekListener(e) {
+    console.error("Seeking")
+    playButton();
+}
+
+function pauseListener(e) {
+    console.error("Paused");
+    window.clearInterval(trackTimesUpdateInterval);
+}
+
 export default class Shader {
     constructor (main) {
         this.main = main;
@@ -42,24 +140,24 @@ export default class Shader {
 
         let play_listener = () => {
 
-            if (connected === true) {
+            if (wavesurfer === null) {
                 return
             }
 
-            const AudioContext = window.AudioContext || window.webkitAudioContext;
-            const audioContext = new AudioContext();
-            const track = audioContext.createMediaElementSource(audioElement);
-            let gainNode = audioContext.createGain();
-            track.connect(gainNode);
-            gainNode.connect(audioContext.destination);
-
-            connected = true
+//            const AudioContext = window.AudioContext || window.webkitAudioContext;
+//            const audioContext = new AudioContext();
+//            const track = audioContext.createMediaElementSource(audioElement);
+//            let gainNode = audioContext.createGain();
+//            track.connect(gainNode);
+//            gainNode.connect(audioContext.destination);
+//
+//            connected = true
 
             console.log(all_keys)
 
             this.canvas.on('render', () => {
                 if (all_data === null) return;
-                let current_time_track_ms = 1000*track.mediaElement.currentTime;
+                let current_time_track_ms = 1000*wavesurfer.getCurrentTime();
                 let ix = Math.round(current_time_track_ms / (1000/60))
                 console.log(current_time_track_ms - ix * (1000/60));
 
@@ -67,17 +165,13 @@ export default class Shader {
                         glslcanvas.uniform("1f", "float", "u_" + key, all_data[key][ix])
                     }
                 )
+
             });
+
+            trackTimesUpdateInterval = window.setInterval(updateTrackTimes, 100);
 
         };
 
-        // fetch("build/data_odysee.json").then((result)=>{
-        //     result.json().then((data)=>{
-        //         all_data = data
-        //         all_keys = Object.keys(data)
-        //         console.info("JSON data loaded!")
-        //     })
-        // });
 
         audioElement.addEventListener("change_track", function(event) {
 
@@ -100,21 +194,45 @@ export default class Shader {
 
             const audioElement = document.getElementById("music");
 
-            audioElement.pause();
-            var source = audioElement.getElementsByTagName("source");
-            console.error("source " + source[0].src);
-            source[0].src = event.detail.track_audio;
+            if (wavesurfer != null) {
+                wavesurfer.empty();
+                wavesurfer.pause()
 
-            audioElement.load();
+                wavesurfer.un('play', play_listener);
+                wavesurfer.un('seek', seekListener);
+                wavesurfer.on('ready')
+            }
+
+            var waveSurferElement = document.getElementById("waveform");
+
+//            audioElement.pause();
+//            var source = audioElement.getElementsByTagName("source");
+//            console.error("source " + source[0].src);
+//            source[0].src = event.detail.track_audio;
+//            audioElement.load();
+
+            wavesurfer = WaveSurfer.create({
+                container: '#waveform',
+                waveColor: 'white',
+                progressColor: 'gray'
+            });
+
+            wavesurfer.on('play', play_listener);
+
+            wavesurfer.on('seek', seekListener);
+
+            wavesurfer.on('ready', readyListener);
+
+            wavesurfer.load(event.detail.track_audio);
 
             set_current_track_name(event.detail.track_name);
 
-            audioElement.removeEventListener('play', play_listener);
-            audioElement.addEventListener('play', play_listener);
 
         });
 
-        audioElement.addEventListener('play', play_listener);
+//        audioElement.addEventListener('play', play_listener);
+
+//        wavesurfer.on('play', play_listener);
 
         audioElement.dispatchEvent(new CustomEvent("change_track", {
             "detail": {

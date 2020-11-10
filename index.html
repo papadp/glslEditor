@@ -25,13 +25,25 @@
 <!--			<a href="#">Link 3</a>-->
 <!--		</div>-->
 
-		<audio controls id="music">
+		<audio id="music">
 		  <source src="build/music_odysee.mp3" type="audio/mp3">
 		</audio>
 		<div id="glsl_editor"></div>
+		<div id="music_player">
+			<div id="waveform"></div>
+			<div id="track-controls">
+				<div id="track-buttons">
+					<button id="play-pause-button"><i class="material-icons">play_arrow</i></button>
+				</div>
+				<div id="track-times">
+					<label id="track-times-label">00:00 / 00:00</label>
+				</div>
+			</div>
+		</div>
 	</body>
 
 	<link type="text/css" rel="stylesheet" href="build/glslEditor.css">
+	<script src="https://unpkg.com/wavesurfer.js"></script>
     <script type="text/javascript" src="build/glslEditor.js"></script>
     <script type="text/javascript">
     	window.glslEditor = new GlslEditor('#glsl_editor', {
