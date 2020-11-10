@@ -195,8 +195,9 @@ export default class Shader {
             const audioElement = document.getElementById("music");
 
             if (wavesurfer != null) {
+                wavesurfer.pause();
                 wavesurfer.empty();
-                wavesurfer.pause()
+                wavesurfer.destroy();
 
                 wavesurfer.un('play', play_listener);
                 wavesurfer.un('seek', seekListener);

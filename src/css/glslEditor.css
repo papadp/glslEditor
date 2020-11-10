@@ -123,10 +123,11 @@ audio {
     overflow-y: scroll;
 }
 
-html, body {
-  height: 100%;
-  margin: 0;
-}
+/*html, body {
+    margin: 0;
+    height: 100%;
+    overflow: hidden
+}*/
 
 
 /* Native Codemirror */
